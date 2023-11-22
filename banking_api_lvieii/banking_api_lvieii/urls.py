@@ -18,11 +18,19 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework_swagger.views import get_swagger_view
 
+urlpatterns = []
+
 urlpatterns_api = [
-    path('api/banking/', include('banking_api.urls')),
+    path('api/banking/', include('banking_api.urls'))
 ]
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
+urlpatterns_swagger = [
     path('api/', get_swagger_view(title='API Docs.', patterns=urlpatterns_api)),
+]
+
+urlpatterns += urlpatterns_api
+urlpatterns += urlpatterns_swagger
+
+urlpatterns += [
+        path('admin/', admin.site.urls),
 ]

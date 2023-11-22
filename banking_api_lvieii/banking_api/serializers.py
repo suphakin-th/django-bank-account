@@ -57,8 +57,8 @@ class TransferHistorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class TransferCreateSerializer(serializers.Serializer):
-    from_customer_name = serializers.CharField(required=True)
-    to_customer_name = serializers.CharField(required=True)
+    from_acc_id = serializers.IntegerField(required=True)
+    to_acc_id = serializers.IntegerField(required=True)
     amount = serializers.FloatField(required=True)
     
     def validate(self, value):

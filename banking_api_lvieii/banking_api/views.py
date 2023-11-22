@@ -107,8 +107,7 @@ class TransferHistoryViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mix
         to_acc_id = data.get('to_acc_id')
         amount = float(data.get('amount'))
         
-        customer = dict(list(BankAccount.objects.filter(id__in=[from_acc_id, to_acc_id]).values_list("customer_id", "customer__name")))
-        print(customer.keys())
+        customer = dict(list(BankAccount.objects.filter(id__in=[from_acc_id, to_acc_id]).values_list("id", "customer__name")))
         if from_acc_id not in customer.keys() or to_acc_id not in customer.keys():
             raise NotFound
         

@@ -44,7 +44,7 @@ class BankAccountListSerializer(serializers.ModelSerializer):
 
 class BankAccountCreateSerializer(serializers.Serializer):
     customer_name = serializers.CharField(required=True)
-    initial_deposit = serializers.IntegerField(required=True)
+    initial_deposit = serializers.FloatField(required=True)
     
     def validate(self, value):
         if isinstance(value['initial_deposit'], int) and int(value['initial_deposit']) <= 0:
